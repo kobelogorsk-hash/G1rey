@@ -204,6 +204,57 @@ const programsData = [
             { name: "Мобилизация позвоночника", duration: 120, sets: 2, rest: 30 },
             { name: "Статическая растяжка", duration: 180, sets: 1, rest: 0 }
         ]
+    },
+    {
+        id: 13,
+        title: "Мастер финтов",
+        type: "skills",
+        typeName: "Финты",
+        difficulty: "medium",
+        difficultyName: "Средний",
+        duration: 18,
+        calories: 140,
+        description: "Изучи основные футбольные финты для обыгрыша соперников.",
+        exercises: [
+            { name: "Финт Зидана (разворот)", duration: 180, sets: 3, rest: 45 },
+            { name: "Степ-овер (перешагивание)", duration: 180, sets: 3, rest: 45 },
+            { name: "Сиссорс (ножницы)", duration: 150, sets: 2, rest: 45 },
+            { name: "Крук-over (крюк)", duration: 150, sets: 2, rest: 45 }
+        ]
+    },
+    {
+        id: 14,
+        title: "Элитные финты",
+        type: "skills",
+        typeName: "Финты",
+        difficulty: "hard",
+        difficultyName: "Сложный",
+        duration: 22,
+        calories: 180,
+        description: "Продвинутые финты для профессионального уровня.",
+        exercises: [
+            { name: "Эластико (резинка)", duration: 180, sets: 3, rest: 60 },
+            { name: "Рабио (кролик)", duration: 150, sets: 3, rest: 45 },
+            { name: "Марсель разворот", duration: 180, sets: 2, rest: 60 },
+            { name: "Комбинация финтов", duration: 240, sets: 2, rest: 60 }
+        ]
+    },
+    {
+        id: 15,
+        title: "Финты в движении",
+        type: "skills",
+        typeName: "Финты",
+        difficulty: "expert",
+        difficultyName: "Эксперт",
+        duration: 25,
+        calories: 220,
+        description: "Выполнение финтов на скорости во время дриблинга.",
+        exercises: [
+            { name: "Ведение + степ-овер", duration: 240, sets: 3, rest: 60 },
+            { name: "Ведение + эластико", duration: 240, sets: 3, rest: 60 },
+            { name: "Слалом с финтами", duration: 300, sets: 2, rest: 60 },
+            { name: "1v1 Симуляция", duration: 300, sets: 2, rest: 90 }
+        ]
     }
 ];
 
