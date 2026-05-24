@@ -36,13 +36,15 @@ class FootballTrainingApp {
             this.populateProfileForm();
         } else {
             this.currentUser = this.createDefaultUser();
+            this.saveUserData();
+            this.populateProfileForm();
         }
     }
 
     createDefaultUser() {
         return {
-            name: '',
-            age: '',
+            name: 'Girey',
+            age: 14,
             level: 'beginner',
             position: 'all',
             goal: 'all',
@@ -518,6 +520,10 @@ class FootballTrainingApp {
         this.currentUser.goal = document.getElementById('training-goal').value;
 
         this.saveUserData();
+        
+        // Update UI immediately
+        this.updateStats();
+        this.renderAchievements();
         
         const successMsg = document.createElement('div');
         successMsg.className = 'success-message';
