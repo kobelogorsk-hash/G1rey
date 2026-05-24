@@ -269,7 +269,37 @@ class FootballTrainingApp {
             exercises: program.exercises
         };
 
+        // Start timer
+        this.startTimer();
+        
         this.showWorkoutMode();
+    }
+
+    startTimer() {
+        // Clear any existing timer
+        if (this.workoutTimer) {
+            clearInterval(this.workoutTimer);
+        }
+        
+        // Update timer every second
+        this.workoutTimer = setInterval(() => {
+            this.updateTimerDisplay();
+        }, 1000);
+    }
+
+    updateTimerDisplay() {
+        const timerElement = document.querySelector('.workout-timer');
+        if (timerElement && this.activeWorkout) {
+            const elapsedTime = Math.floor((Date.now() - this.activeWorkout.startTime) / 1000);
+            timerElement.textContent = this.formatTime(elapsedTime);
+        }
+    }
+
+    stopTimer() {
+        if (this.workoutTimer) {
+            clearInterval(this.workoutTimer);
+            this.workoutTimer = null;
+        }
     }
 
     showWorkoutMode() {
@@ -325,6 +355,9 @@ class FootballTrainingApp {
     }
 
     finishWorkout() {
+        // Stop timer
+        this.stopTimer();
+        
         const workoutDuration = Math.floor((Date.now() - this.activeWorkout.startTime) / 1000);
         const pointsEarned = Math.floor(this.activeWorkout.program.calories / 10) + 50;
 
@@ -401,7 +434,7 @@ class FootballTrainingApp {
                     </div>
                 </div>
                 
-                <button class="start-workout-btn" onclick="document.getElementById('workout-modal').classList.remove('active')">
+                <button class="start-workout-btn" onclick="app.stopTimer(); document.getElementById('workout-modal').classList.remove('active')">
                     Продолжить
                 </button>
             </div>
@@ -591,6 +624,7 @@ class FootballTrainingApp {
     // Modals
     setupModals() {
         document.getElementById('close-workout').addEventListener('click', () => {
+            this.stopTimer();
             document.getElementById('workout-modal').classList.remove('active');
         });
 
@@ -601,6 +635,9 @@ class FootballTrainingApp {
         // Close on outside click
         window.addEventListener('click', (e) => {
             if (e.target.classList.contains('modal')) {
+                if (e.target.id === 'workout-modal') {
+                    this.stopTimer();
+                }
                 e.target.classList.remove('active');
             }
         });

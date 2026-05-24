@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тест таймера</title>
+    <style>
+        body { font-family: Arial; padding: 20px; }
+        .timer { font-size: 3rem; margin: 20px 0; }
+        button { padding: 10px 20px; margin: 5px; font-size: 1rem; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h1>Тест работы таймера</h1>
+    <div class="timer" id="timer">00:00</div>
+    <button onclick="startTimer()">Старт</button>
+    <button onclick="stopTimer()">Стоп</button>
+    <button onclick="resetTimer()">Сброс</button>
+    
+    <script>
+        let timerInterval = null;
+        let startTime = null;
+        
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = seconds % 60;
+            return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+        }
+        
+        function updateDisplay() {
+            const elapsed = Math.floor((Date.now() - startTime) / 1000);
+            document.getElementById('timer').textContent = formatTime(elapsed);
+        }
+        
+        function startTimer() {
+            if (timerInterval) clearInterval(timerInterval);
+            startTime = Date.now();
+            timerInterval = setInterval(updateDisplay, 1000);
+            updateDisplay();
+        }
+        
+        function stopTimer() {
+            if (timerInterval) {
+                clearInterval(timerInterval);
+                timerInterval = null;
+            }
+        }
+        
+        function resetTimer() {
+            stopTimer();
+            document.getElementById('timer').textContent = '00:00';
+        }
+    </script>
+</body>
+</html>
