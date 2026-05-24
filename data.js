@@ -1,565 +1,151 @@
-// Football Training Data for Teens 12-16 years old
-
-const programsData = [
-    {
-        id: 1,
-        title: "Основы контроля мяча",
-        type: "ball",
-        typeName: "Работа с мячом",
-        difficulty: "easy",
-        difficultyName: "Легкий",
-        duration: 15,
-        calories: 120,
-        description: "Идеально для начинающих. Улучши контроль мяча за 15 минут.",
-        exercises: [
-            { name: "Ведение мяча внутренней стороной стопы", duration: 180, sets: 2, rest: 30 },
-            { name: "Ведение мяча внешней стороной стопы", duration: 180, sets: 2, rest: 30 },
-            { name: "Контроль мяча подошвой", duration: 120, sets: 3, rest: 45 },
-            { name: "Жонглирование мячом", duration: 180, sets: 2, rest: 30 }
-        ]
-    },
-    {
-        id: 2,
-        title: "Скоростная работа с мячом",
-        type: "ball",
-        typeName: "Работа с мячом",
-        difficulty: "medium",
-        difficultyName: "Средний",
-        duration: 20,
-        calories: 180,
-        description: "Развивай скорость и координацию при работе с мячом.",
-        exercises: [
-            { name: "Челночный бег с мячом", duration: 240, sets: 3, rest: 60 },
-            { name: "Быстрое ведение между конусами", duration: 180, sets: 3, rest: 45 },
-            { name: "Резкая смена направления", duration: 180, sets: 2, rest: 45 },
-            { name: "Удары по воротам после рывка", duration: 240, sets: 2, rest: 60 }
-        ]
-    },
-    {
-        id: 3,
-        title: "Точность передач",
-        type: "ball",
-        typeName: "Работа с мячом",
-        difficulty: "medium",
-        difficultyName: "Средний",
-        duration: 18,
-        calories: 150,
-        description: "Улучши точность коротких и длинных передач.",
-        exercises: [
-            { name: "Короткие передачи у стены", duration: 240, sets: 3, rest: 45 },
-            { name: "Длинные передачи на точность", duration: 180, sets: 3, rest: 60 },
-            { name: "Передачи внутренней стороной стопы", duration: 180, sets: 2, rest: 30 },
-            { name: "Передачи в движении", duration: 240, sets: 2, rest: 45 }
-        ]
-    },
-    {
-        id: 4,
-        title: "Футбольное кардио",
-        type: "cardio",
-        typeName: "Кардио",
-        difficulty: "medium",
-        difficultyName: "Средний",
-        duration: 25,
-        calories: 250,
-        description: "Интенсивная кардиотренировка для развития выносливости.",
-        exercises: [
-            { name: "Бег трусцой", duration: 300, sets: 1, rest: 60 },
-            { name: "Интервальный спринт", duration: 240, sets: 4, rest: 90 },
-            { name: "Бег с высоким подниманием бедра", duration: 120, sets: 3, rest: 45 },
-            { name: "Боковые перемещения", duration: 180, sets: 3, rest: 45 }
-        ]
-    },
-    {
-        id: 5,
-        title: "HIIT для футболистов",
-        type: "cardio",
-        typeName: "Кардио",
-        difficulty: "hard",
-        difficultyName: "Сложный",
-        duration: 20,
-        calories: 280,
-        description: "Высокоинтенсивная интервальная тренировка для максимальной выносливости.",
-        exercises: [
-            { name: "Спринт 30 секунд / отдых 30 секунд", duration: 300, sets: 5, rest: 60 },
-            { name: "Берпи", duration: 120, sets: 3, rest: 60 },
-            { name: "Прыжки через барьеры", duration: 180, sets: 3, rest: 45 },
-            { name: "Челночный бег", duration: 180, sets: 4, rest: 60 }
-        ]
-    },
-    {
-        id: 6,
-        title: "Аэробная выносливость",
-        type: "cardio",
-        typeName: "Кардио",
-        difficulty: "easy",
-        difficultyName: "Легкий",
-        duration: 30,
-        calories: 220,
-        description: "Базовая аэробная тренировка для развития общей выносливости.",
-        exercises: [
-            { name: "Непрерывный бег", duration: 600, sets: 1, rest: 120 },
-            { name: "Бег зигзагом", duration: 240, sets: 2, rest: 60 },
-            { name: "Бег с изменением темпа", duration: 300, sets: 2, rest: 90 },
-            { name: "Восстановительный бег", duration: 300, sets: 1, rest: 0 }
-        ]
-    },
-    {
-        id: 7,
-        title: "Укрепление корпуса",
-        type: "core",
-        typeName: "Корпус",
-        difficulty: "easy",
-        difficultyName: "Легкий",
-        duration: 15,
-        calories: 100,
-        description: "Базовые упражнения для укрепления мышц кора.",
-        exercises: [
-            { name: "Планка", duration: 60, sets: 3, rest: 30 },
-            { name: "Скручивания", duration: 90, sets: 3, rest: 45 },
-            { name: "Подъем ног лежа", duration: 60, sets: 3, rest: 45 },
-            { name: "Русский твист", duration: 90, sets: 2, rest: 30 }
-        ]
-    },
-    {
-        id: 8,
-        title: "Пресс футболиста",
-        type: "core",
-        typeName: "Корпус",
-        difficulty: "medium",
-        difficultyName: "Средний",
-        duration: 20,
-        calories: 140,
-        description: "Специализированная тренировка пресса для футболистов.",
-        exercises: [
-            { name: "Велосипед", duration: 120, sets: 3, rest: 45 },
-            { name: "Планка с касанием плеч", duration: 120, sets: 3, rest: 45 },
-            { name: "Подъем ног в висе", duration: 90, sets: 3, rest: 60 },
-            { name: "Боковая планка", duration: 120, sets: 2, rest: 30 }
-        ]
-    },
-    {
-        id: 9,
-        title: "Стабильность корпуса",
-        type: "core",
-        typeName: "Корпус",
-        difficulty: "hard",
-        difficultyName: "Сложный",
-        duration: 25,
-        calories: 180,
-        description: "Продвинутые упражнения для стабильности и баланса.",
-        exercises: [
-            { name: "Планка с подъемом ног", duration: 120, sets: 3, rest: 45 },
-            { name: "Динамическая планка", duration: 150, sets: 3, rest: 60 },
-            { name: "V-образные скручивания", duration: 90, sets: 3, rest: 45 },
-            { name: "Боковая планка с ротацией", duration: 120, sets: 2, rest: 45 }
-        ]
-    },
-    {
-        id: 10,
-        title: "Техника дриблинга",
-        type: "ball",
-        typeName: "Работа с мячом",
-        difficulty: "easy",
-        difficultyName: "Легкий",
-        duration: 20,
-        calories: 160,
-        description: "Основы дриблинга для начинающих футболистов.",
-        exercises: [
-            { name: "Ведение мяча змейкой", duration: 180, sets: 3, rest: 45 },
-            { name: "Ведение вокруг конусов", duration: 180, sets: 3, rest: 45 },
-            { name: "Контроль мяча в малом пространстве", duration: 120, sets: 2, rest: 30 },
-            { name: "Финты и обманные движения", duration: 180, sets: 2, rest: 45 }
-        ]
-    },
-    {
-        id: 11,
-        title: "Взрывная сила",
-        type: "cardio",
-        typeName: "Кардио",
-        difficulty: "hard",
-        difficultyName: "Сложный",
-        duration: 22,
-        calories: 300,
-        description: "Тренировка взрывной силы и мощности.",
-        exercises: [
-            { name: "Прыжки в длину с места", duration: 120, sets: 4, rest: 60 },
-            { name: "Прыжки на тумбу", duration: 120, sets: 3, rest: 60 },
-            { name: "Спринт в гору", duration: 180, sets: 4, rest: 90 },
-            { name: "Многоскоки", duration: 120, sets: 3, rest: 60 }
-        ]
-    },
-    {
-        id: 12,
-        title: "Гибкость и мобильность",
-        type: "core",
-        typeName: "Корпус",
-        difficulty: "easy",
-        difficultyName: "Легкий",
-        duration: 15,
-        calories: 80,
-        description: "Растяжка и мобильность для профилактики травм.",
-        exercises: [
-            { name: "Динамическая растяжка ног", duration: 180, sets: 1, rest: 30 },
-            { name: "Растяжка бедер", duration: 120, sets: 2, rest: 30 },
-            { name: "Мобилизация позвоночника", duration: 120, sets: 2, rest: 30 },
-            { name: "Статическая растяжка", duration: 180, sets: 1, rest: 0 }
-        ]
-    },
-    {
-        id: 13,
-        title: "Мастер финтов",
-        type: "skills",
-        typeName: "Финты",
-        difficulty: "medium",
-        difficultyName: "Средний",
-        duration: 18,
-        calories: 140,
-        description: "Изучи основные футбольные финты для обыгрыша соперников.",
-        exercises: [
-            { name: "Финт Зидана (разворот)", duration: 180, sets: 3, rest: 45 },
-            { name: "Степ-овер (перешагивание)", duration: 180, sets: 3, rest: 45 },
-            { name: "Сиссорс (ножницы)", duration: 150, sets: 2, rest: 45 },
-            { name: "Крук-over (крюк)", duration: 150, sets: 2, rest: 45 }
-        ]
-    },
-    {
-        id: 14,
-        title: "Элитные финты",
-        type: "skills",
-        typeName: "Финты",
-        difficulty: "hard",
-        difficultyName: "Сложный",
-        duration: 22,
-        calories: 180,
-        description: "Продвинутые финты для профессионального уровня.",
-        exercises: [
-            { name: "Эластико (резинка)", duration: 180, sets: 3, rest: 60 },
-            { name: "Рабио (кролик)", duration: 150, sets: 3, rest: 45 },
-            { name: "Марсель разворот", duration: 180, sets: 2, rest: 60 },
-            { name: "Комбинация финтов", duration: 240, sets: 2, rest: 60 }
-        ]
-    },
-    {
-        id: 15,
-        title: "Финты в движении",
-        type: "skills",
-        typeName: "Финты",
-        difficulty: "expert",
-        difficultyName: "Эксперт",
-        duration: 25,
-        calories: 220,
-        description: "Выполнение финтов на скорости во время дриблинга.",
-        exercises: [
-            { name: "Ведение + степ-овер", duration: 240, sets: 3, rest: 60 },
-            { name: "Ведение + эластико", duration: 240, sets: 3, rest: 60 },
-            { name: "Слалом с финтами", duration: 300, sets: 2, rest: 60 },
-            { name: "1v1 Симуляция", duration: 300, sets: 2, rest: 90 }
-        ]
-    }
-];
-
-const exercisesData = [
-    {
-        id: 1,
-        name: "Планка",
-        icon: "🧘",
-        category: "core",
-        description: "Статическое упражнение для укрепления всего корпуса",
-        instructions: [
-            "Примите положение упора лёжа на предплечьях",
-            "Тело должно образовывать прямую линию от головы до пяток",
-            "Напрягите мышцы живота и ягодиц",
-            "Держите позицию указанное время"
-        ],
-        muscles: ["Пресс", "Спина", "Ягодицы"],
-        difficulty: "easy"
-    },
-    {
-        id: 2,
-        name: "Ведение мяча",
-        icon: "⚽",
-        category: "ball",
-        description: "Базовое упражнение для контроля мяча",
-        instructions: [
-            "Ведите мяч внутренней стороной стопы",
-            "Держите мяч близко к ноге",
-            "Поднимайте голову периодически",
-            "Контролируйте силу толчка"
-        ],
-        muscles: ["Ноги", "Координация"],
-        difficulty: "easy"
-    },
-    {
-        id: 3,
-        name: "Берпи",
-        icon: "💪",
-        category: "cardio",
-        description: "Комплексное упражнение для развития выносливости",
-        instructions: [
-            "Из положения стоя присядьте и положите руки на пол",
-            "Прыжком примите положение упора лёжа",
-            "Отожмитесь",
-            "Прыжком верните ноги к рукам и выпрыгните вверх"
-        ],
-        muscles: ["Все тело", "Кардио"],
-        difficulty: "medium"
-    },
-    {
-        id: 4,
-        name: "Скручивания",
-        icon: "🔄",
-        category: "core",
-        description: "Классическое упражнение для пресса",
-        instructions: [
-            "Лягте на спину, согните ноги в коленях",
-            "Руки за головой или на груди",
-            "Поднимайте верхнюю часть корпуса",
-            "Опускайтесь медленно, не кладя голову на пол"
-        ],
-        muscles: ["Пресс"],
-        difficulty: "easy"
-    },
-    {
-        id: 5,
-        name: "Спринт",
-        icon: "🏃",
-        category: "cardio",
-        description: "Бег на максимальной скорости",
-        instructions: [
-            "Примите стартовое положение",
-            "Мощно оттолкнитесь от земли",
-            "Работайте руками активно",
-            "Держите корпус слегка наклоненным вперед"
-        ],
-        muscles: ["Ноги", "Кардио"],
-        difficulty: "medium"
-    },
-    {
-        id: 6,
-        name: "Жонглирование мячом",
-        icon: "🎯",
-        category: "ball",
-        description: "Упражнение для чувства мяча",
-        instructions: [
-            "Подбросьте мяч ногой вверх",
-            "Контролируйте мяч подъёмом стопы",
-            "Чередуйте ноги",
-            "Стремитесь удержать мяч в воздухе"
-        ],
-        muscles: ["Ноги", "Координация"],
-        difficulty: "medium"
-    },
-    {
-        id: 7,
-        name: "Боковая планка",
-        icon: "🦎",
-        category: "core",
-        description: "Упражнение для косых мышц живота",
-        instructions: [
-            "Лягте на бок, обопритесь на предплечье",
-            "Поднимите таз, образуя прямую линию",
-            "Держите мышцы напряженными",
-            "Поменяйте сторону после выполнения"
-        ],
-        muscles: ["Косые мышцы", "Спина"],
-        difficulty: "medium"
-    },
-    {
-        id: 8,
-        name: "Челночный бег",
-        icon: "⚡",
-        category: "cardio",
-        description: "Бег с резкими изменениями направления",
-        instructions: [
-            "Отметьте две точки на расстоянии 5-10 метров",
-            "Бегите от одной точки к другой",
-            "Касайтесь земли на каждой точке",
-            "Меняйте направление максимально быстро"
-        ],
-        muscles: ["Ноги", "Кардио", "Координация"],
-        difficulty: "medium"
-    },
-    {
-        id: 9,
-        name: "Подъем ног лежа",
-        icon: "🦵",
-        category: "core",
-        description: "Упражнение для нижней части пресса",
-        instructions: [
-            "Лягте на спину, руки вдоль тела",
-            "Поднимайте прямые ноги до угла 90 градусов",
-            "Медленно опускайте, не касаясь пола",
-            "Держите поясницу прижатой к полу"
-        ],
-        muscles: ["Нижний пресс"],
-        difficulty: "medium"
-    },
-    {
-        id: 10,
-        name: "Передачи у стены",
-        icon: "🧱",
-        category: "ball",
-        description: "Отработка точности передач",
-        instructions: [
-            "Встаньте в 3-5 метрах от стены",
-            "Делайте передачи внутренней стороной стопы",
-            "Контролируйте силу удара",
-            "Принимайте мяч и повторяйте"
-        ],
-        muscles: ["Ноги", "Точность"],
-        difficulty: "easy"
-    },
-    {
-        id: 11,
-        name: "Прыжки через барьеры",
-        icon: "🚧",
-        category: "cardio",
-        description: "Развитие взрывной силы ног",
-        instructions: [
-            "Расставьте небольшие барьеры в ряд",
-            "Прыгайте двумя ногами одновременно",
-            "Приземляйтесь мягко на носки",
-            "Минимальный контакт с землей между прыжками"
-        ],
-        muscles: ["Ноги", "Взрывная сила"],
-        difficulty: "hard"
-    },
-    {
-        id: 12,
-        name: "Русский твист",
-        icon: "🌀",
-        category: "core",
-        description: "Упражнение для косых мышц",
-        instructions: [
-            "Сядьте на пол, согните ноги в коленях",
-            "Отклоните корпус назад на 45 градусов",
-            "Поворачивайте корпус в стороны",
-            "Можно использовать мяч или гантель"
-        ],
-        muscles: ["Косые мышцы", "Пресс"],
-        difficulty: "medium"
-    },
-    {
-        id: 13,
-        name: "Велосипед",
-        icon: "🚴",
-        category: "core",
-        description: "Динамическое упражнение для всего пресса",
-        instructions: [
-            "Лягте на спину, руки за головой",
-            "Поднимите ноги и выполняйте движения как на велосипеде",
-            "Касайтесь локтем противоположного колена",
-            "Держите темп постоянным"
-        ],
-        muscles: ["Пресс", "Косые мышцы"],
-        difficulty: "medium"
-    },
-    {
-        id: 14,
-        name: "Финты",
-        icon: "🎭",
-        category: "ball",
-        description: "Обманные движения для обыгрыша соперника",
-        instructions: [
-            "Приблизьтесь к воображаемому защитнику",
-            "Сделайте ложное движение корпусом",
-            "Резко измените направление",
-            "Ускорьтесь после финта"
-        ],
-        muscles: ["Ноги", "Координация", "Ловкость"],
-        difficulty: "hard"
-    },
-    {
-        id: 15,
-        name: "Растяжка",
-        icon: "🤸",
-        category: "core",
-        description: "Статическая растяжка для гибкости",
-        instructions: [
-            "Выполняйте медленные контролируемые движения",
-            "Задерживайтесь в каждой позиции 20-30 секунд",
-            "Не допускайте болевых ощущений",
-            "Дышите глубоко и равномерно"
-        ],
-        muscles: ["Все тело"],
-        difficulty: "easy"
-    }
-];
-
-const achievementsData = [
-    {
-        id: 1,
-        name: "Первый шаг",
-        description: "Выполни первую тренировку",
-        icon: "🌟",
-        requirement: { type: "workouts", count: 1 }
-    },
-    {
-        id: 2,
-        name: "Неделя победителя",
-        description: "7 дней тренировок подряд",
-        icon: "🔥",
-        requirement: { type: "streak", count: 7 }
-    },
-    {
-        id: 3,
-        name: "Месяц силы",
-        description: "30 дней тренировок подряд",
-        icon: "💪",
-        requirement: { type: "streak", count: 30 }
-    },
-    {
-        id: 4,
-        name: "Мастер мяча",
-        description: "Выполни 20 тренировок с мячом",
-        icon: "⚽",
-        requirement: { type: "ballWorkouts", count: 20 }
-    },
-    {
-        id: 5,
-        name: "Железный человек",
-        description: "Выполни 50 тренировок",
-        icon: "🏆",
-        requirement: { type: "workouts", count: 50 }
-    },
-    {
-        id: 6,
-        name: "Король кардио",
-        description: "Выполни 15 кардио тренировок",
-        icon: "❤️",
-        requirement: { type: "cardioWorkouts", count: 15 }
-    },
-    {
-        id: 7,
-        name: "Стальной пресс",
-        description: "Выполни 15 тренировок на корпус",
-        icon: "🥇",
-        requirement: { type: "coreWorkouts", count: 15 }
-    },
-    {
-        id: 8,
-        name: "Наборщик очков",
-        description: "Набери 1000 очков",
-        icon: "⭐",
-        requirement: { type: "points", count: 1000 }
-    },
-    {
-        id: 9,
-        name: "Профи",
-        description: "Набери 5000 очков",
-        icon: "👑",
-        requirement: { type: "points", count: 5000 }
-    },
-    {
-        id: 10,
-        name: "Легенда",
-        description: "Набери 10000 очков",
-        icon: "🌈",
-        requirement: { type: "points", count: 10000 }
-    }
-];
-
-// Export data for use in app.js
-if (typeof module !== 'undefined' && module.exports) {
-    module.exports = { programsData, exercisesData, achievementsData };
-}
+const appData = {
+    skills: [
+        {
+            id: 'stepover',
+            title: 'Step Over (Переступ)',
+            level: 'beginner',
+            icon: '🦶',
+            description: 'Базовый финт для обмана защитника движением ноги вокруг мяча.',
+            steps: [
+                { title: 'Подход', text: 'Приближайтесь к защитнику на средней скорости, ведя мяч внешней стороной стопы.' },
+                { title: 'Обманное движение', text: 'Перенесите вес на опорную ногу. Другой ногой сделайте круговое движение вокруг мяча спереди назад, не касаясь его.' },
+                { title: 'Ускорение', text: 'Как только защитник дернется в сторону движения вашей ноги, резко толкните мяч внешней стороной той же стопы в противоположную сторону и ускорьтесь.' }
+            ],
+            tips: 'Смотрите на корпус соперника, а не на мяч. Главное — резкость первого шага после финта.'
+        },
+        {
+            id: 'scissors',
+            title: 'Scissors (Ножницы)',
+            level: 'beginner',
+            icon: '✂️',
+            description: 'Классический финт, имитирующий проход с двух сторон.',
+            steps: [
+                { title: 'Подготовка', text: 'Двигайтесь прямо на соперника.' },
+                { title: 'Движение ног', text: 'Проведите одной ногой вокруг мяча снаружи внутрь, затем сразу второй ногой снаружи внутрь (или наоборот), создавая эффект ножниц.' },
+                { title: 'Рывок', text: 'После второго движения ногой быстро коснитесь мяча и уйдите в свободную зону.' }
+            ],
+            tips: 'Держите колени согнутыми для лучшего баланса. Не касайтесь мяча во время переступов.'
+        },
+        {
+            id: 'elastico',
+            title: 'Elastico (Резинка)',
+            level: 'advanced',
+            icon: '🍬',
+            description: 'Эффектный финт Роберто Карлоса и Роналдиньо. Резкое движение стопой туда-сюда.',
+            steps: [
+                { title: 'Постановка стопы', text: 'Подойдите к мячу. Стопа должна быть расслаблена.' },
+                { title: 'Движение', text: 'Внешней частью стопы резко толкните мяч в одну сторону (как будто хотите уйти туда), но мгновенно, не отрывая ногу, внутренней частью стопы переведите мяч в другую сторону.' },
+                { title: 'Выход', text: 'Все движение делается одной ногой за долю секунды. Соперник должен успеть среагировать на первое ложное движение.' }
+            ],
+            tips: 'Тренируйте это на месте сначала медленно. Ключ — в скорости переключения с внешней на внутреннюю часть стопы.'
+        },
+        {
+            id: 'zidane-turn',
+            title: 'Zidane Turn (Разворот Зидана)',
+            level: 'intermediate',
+            icon: '🔄',
+            description: 'Элегантный разворот на 360 градусов для ухода от прессинга.',
+            steps: [
+                { title: 'Контакт', text: 'Когда защитник逼近ается сбоку или сзади, поставьте одну ногу на мяч сверху.' },
+                { title: 'Вращение', text: 'Перекатите мяч под собой, поворачиваясь спиной к сопернику. Вторая нога помогает сделать полный оборот.' },
+                { title: 'Защита', text: 'Используйте корпус как щит между мячом и защитником во время разворота.' }
+            ],
+            tips: 'Держите мяч близко к ногам. Этот финт идеален, когда вас зажимают к бровке.'
+        },
+        {
+            id: 'marseille-turn',
+            title: 'Marseille Turn',
+            level: 'advanced',
+            icon: '🇫🇷',
+            description: 'Усложненная версия разворота Зидана с ведением.',
+            steps: [
+                { title: 'Ведение', text: 'Ведите мяч правой ногой.' },
+                { title: 'Стоп', text: 'Остановите мяч подошвой правой ноги.' },
+                { title: 'Разворот', text: 'Сделайте шаг левой ногой за мяч, поворачиваясь на 180 градусов.' },
+                { title: 'Продолжение', text: 'Подхватите мяч левой ногой и продолжите движение в новом направлении.' }
+            ],
+            tips: 'Требует отличной координации. Практикуйте без мяча для начала.'
+        },
+        {
+            id: 'roulette',
+            title: 'The Roulette',
+            level: 'expert',
+            icon: '🎡',
+            description: 'Вращение вокруг мяча для смены направления атаки.',
+            steps: [
+                { title: 'Фаза 1', text: 'Поставьте правую ногу на мяч.' },
+                { title: 'Фаза 2', text: 'Потяните мяч назад правой ногой, одновременно делая шаг левой ногой вперед и поворачивая корпус.' },
+                { title: 'Фаза 3', text: 'Когда мяч окажется с другой стороны, подхватите его левой ногой и ускорьтесь.' }
+            ],
+            tips: 'Идеально работает против защитников, которые пытаются выбить мяч спереди.'
+        }
+    ],
+    workouts: [
+        {
+            id: 'ball-control-1',
+            title: 'Базовое ведение',
+            category: 'ball',
+            level: 'beginner',
+            duration: '15 мин',
+            exercises: [
+                { name: 'Ведение внутри стопы', time: 30, muscles: ['Икры', 'Квадрицепсы', 'Координация'], desc: 'Ведите мяч змейкой, касаясь только внутренней стороной стопы.' },
+                { name: 'Ведение снаружи стопы', time: 30, muscles: ['Голеностоп', 'Берда'], desc: 'Аналогично, но касания внешней стороной стопы.' },
+                { name: 'Челнок 5 метров', time: 45, muscles: ['Пресс', 'Ноги', 'Выносливость'], desc: 'Ведите мяч до конуса и обратно, меняя ногу.' }
+            ]
+        },
+        {
+            id: 'cardio-hiit',
+            title: 'Футбольное HIIT',
+            category: 'cardio',
+            level: 'intermediate',
+            duration: '20 мин',
+            exercises: [
+                { name: 'Спринт 20м', time: 15, muscles: ['Быстрые волокна', 'Икры'], desc: 'Максимальное ускорение на короткой дистанции.' },
+                { name: 'Отдых шагом', time: 30, muscles: ['Восстановление'], desc: 'Медленная ходьба для восстановления дыхания.' },
+                { name: 'Прыжки через барьер', time: 40, muscles: ['Взрывная сила', 'Пресс'], desc: 'Имитация прыжков через небольшие препятствия.' }
+            ]
+        },
+        {
+            id: 'core-strength',
+            title: 'Стальной Корпус',
+            category: 'core',
+            level: 'intermediate',
+            duration: '15 мин',
+            exercises: [
+                { name: 'Планка', time: 45, muscles: ['Прямая мышца живота', 'Плечи', 'Спина'], desc: 'Держите тело ровно, напрягая пресс.' },
+                { name: 'Русский твист', time: 40, muscles: ['Косые мышцы', 'Кор'], desc: 'Повороты корпуса с мячом в руках.' },
+                { name: 'Подъем ног лежа', time: 30, muscles: ['Нижний пресс', 'Сгибатели бедра'], desc: 'Поднимайте прямые ноги до угла 90 градусов.' }
+            ]
+        },
+        {
+            id: 'tricks-master',
+            title: 'Мастер Финтов',
+            category: 'ball',
+            level: 'intermediate',
+            duration: '25 мин',
+            exercises: [
+                { name: 'Отработка Step Over', time: 60, muscles: ['Координация', 'Голеностоп'], desc: 'Серия переступов на месте и в движении.' },
+                { name: 'Сиссорс + Ускорение', time: 60, muscles: ['Взрывная сила', 'Техника'], desc: 'Комбинация ножниц и рывка.' },
+                { name: '1 на 1 (Тень)', time: 120, muscles: ['Реакция', 'Все тело'], desc: 'Представьте защитника и применяйте изученные финты.' }
+            ]
+        },
+        {
+            id: 'elite-tricks',
+            title: 'Элитные Финты',
+            category: 'ball',
+            level: 'advanced',
+            duration: '30 мин',
+            exercises: [
+                { name: 'Elastico Drill', time: 90, muscles: ['Мелкая моторика стопы', 'Баланс'], desc: 'Многократное повторение резинки правой и левой ногой.' },
+                { name: 'Roulette Turns', time: 90, muscles: ['Вестибулярный аппарат', 'Ноги'], desc: 'Развороты Зидана в обе стороны.' },
+                { name: 'Combo Flow', time: 120, muscles: ['Выносливость', 'Креативность'], desc: 'Связка: Степ-овер -> Эластико -> Удар.' }
+            ]
+        }
+    ],
+    achievements: [
+        { id: 'first_blood', title: 'Первая кровь', desc: 'Заверши первую тренировку', icon: '🏆', req: 1, type: 'workouts' },
+        { id: 'skill_master', title: 'Маг Финтов', desc: 'Изучи 5 финтов', icon: '🎩', req: 5, type: 'skills' },
+        { id: 'iron_abs', title: 'Железный Пресс', desc: 'Сделай 10 тренировок на кор', icon: '🧱', req: 10, type: 'core' },
+        { id: 'marathon', title: 'Марафонец', desc: '100 минут тренировок', icon: '⏱️', req: 100, type: 'minutes' }
+    ]
+};
