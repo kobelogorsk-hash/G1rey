@@ -3,226 +3,199 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Football Training Pro - Для подростков 12-16 лет</title>
+    <title>Football Training for Athletes</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="app-container">
-        <!-- Header -->
-        <header class="header">
-            <h1>⚽ Football Training Pro</h1>
-            <p class="subtitle">Тренировки для футболистов 12-16 лет</p>
-        </header>
+    <!-- Навигация -->
+    <nav class="navbar">
+        <div class="logo">⚽ Football Training for Athletes</div>
+        <div class="nav-links">
+            <button class="nav-btn active" data-tab="home">Главная</button>
+            <button class="nav-btn" data-tab="skills">Финты</button>
+            <button class="nav-btn" data-tab="workouts">Тренировки</button>
+            <button class="nav-btn" data-tab="progress">Прогресс</button>
+            <button class="nav-btn" data-tab="profile">Профиль</button>
+        </div>
+    </nav>
 
-        <!-- Navigation -->
-        <nav class="navigation">
-            <button class="nav-btn active" data-section="home">🏠 Главная</button>
-            <button class="nav-btn" data-section="programs">📋 Программы</button>
-            <button class="nav-btn" data-section="exercises">💪 Упражнения</button>
-            <button class="nav-btn" data-section="progress">📊 Прогресс</button>
-            <button class="nav-btn" data-section="profile">👤 Профиль</button>
-        </nav>
+    <!-- Основной контент -->
+    <main class="container">
+        
+        <!-- ГЛАВНАЯ СТРАНИЦА -->
+        <section id="home" class="tab-content active">
+            <div class="hero-banner">
+                <h1>Стань лучшей версией себя, <span id="user-name-display">Гирей</span>!</h1>
+                <p>Твой персональный путь к профессиональному футболу</p>
+            </div>
 
-        <!-- Main Content Area -->
-        <main class="content">
-            <!-- Home Section -->
-            <section id="home" class="section active">
-                <div class="welcome-card">
-                    <h2>Добро пожаловать!</h2>
-                    <p>Готов стать лучше? Выбери программу и начни тренироваться!</p>
+            <div class="program-of-day-card" id="daily-program-btn">
+                <div class="pod-bg">🔥</div>
+                <div class="pod-info">
+                    <h2>Программа Дня</h2>
+                    <p id="daily-program-title">Загрузка...</p>
+                    <span class="start-badge">Начать сейчас</span>
                 </div>
-                
-                <div class="quick-stats">
-                    <div class="stat-card">
-                        <span class="stat-icon">🔥</span>
-                        <span class="stat-value" id="streak-days">0</span>
-                        <span class="stat-label">Дней подряд</span>
-                    </div>
-                    <div class="stat-card">
-                        <span class="stat-icon">✅</span>
-                        <span class="stat-value" id="completed-workouts">0</span>
-                        <span class="stat-label">Тренировок</span>
-                    </div>
-                    <div class="stat-card">
-                        <span class="stat-icon">⭐</span>
-                        <span class="stat-value" id="total-points">0</span>
-                        <span class="stat-label">Очков</span>
-                    </div>
-                </div>
+            </div>
 
-                <div class="featured-program">
-                    <h3>🌟 Программа дня</h3>
-                    <div class="program-card featured" data-program-id="1">
-                        <div class="program-header">
-                            <span class="program-type ball-work">Работа с мячом</span>
-                            <span class="program-difficulty easy">Легкий</span>
-                        </div>
-                        <h4>Основы контроля мяча</h4>
-                        <p>Идеально для начинающих. Улучши контроль мяча за 15 минут.</p>
-                        <div class="program-meta">
-                            <span>⏱️ 15 мин</span>
-                            <span>🔥 120 ккал</span>
-                        </div>
-                    </div>
+            <h3 class="section-title">Популярные категории</h3>
+            <div class="categories-grid">
+                <div class="category-card" onclick="app.filterWorkouts('ball')">
+                    <div class="cat-icon">⚽</div>
+                    <h4>Работа с мячом</h4>
                 </div>
-            </section>
-
-            <!-- Programs Section -->
-            <section id="programs" class="section">
-                <h2>📋 Программы тренировок</h2>
-                
-                <div class="filter-buttons">
-                    <button class="filter-btn active" data-filter="all">Все</button>
-                    <button class="filter-btn" data-filter="ball">С мячом</button>
-                    <button class="filter-btn" data-filter="cardio">Кардио</button>
-                    <button class="filter-btn" data-filter="core">Корпус</button>
-                    <button class="filter-btn" data-filter="skills">Финты</button>
+                <div class="category-card" onclick="app.filterWorkouts('cardio')">
+                    <div class="cat-icon">🏃</div>
+                    <h4>Кардио</h4>
                 </div>
-
-                <div class="programs-grid" id="programs-list">
-                    <!-- Programs will be loaded here -->
+                <div class="category-card" onclick="app.filterWorkouts('core')">
+                    <div class="cat-icon">💪</div>
+                    <h4>Корпус</h4>
                 </div>
-            </section>
-
-            <!-- Exercises Section -->
-            <section id="exercises" class="section">
-                <h2>💪 Библиотека упражнений</h2>
-                
-                <div class="search-bar">
-                    <input type="text" id="exercise-search" placeholder="🔍 Поиск упражнений...">
+                <div class="category-card" onclick="app.switchTab('skills')">
+                    <div class="cat-icon">✨</div>
+                    <h4>Финты</h4>
                 </div>
+            </div>
+        </section>
 
-                <div class="exercises-grid" id="exercises-list">
-                    <!-- Exercises will be loaded here -->
+        <!-- РАЗДЕЛ ФИНТЫ -->
+        <section id="skills" class="tab-content">
+            <h2 class="section-title">Библиотека Финтов</h2>
+            <div class="filter-bar">
+                <button class="filter-btn active" data-filter="all">Все</button>
+                <button class="filter-btn" data-filter="beginner">Новичок</button>
+                <button class="filter-btn" data-filter="intermediate">Средний</button>
+                <button class="filter-btn" data-filter="advanced">Профи</button>
+            </div>
+            <div id="skills-grid" class="cards-grid">
+                <!-- Карточки генерируются JS -->
+            </div>
+        </section>
+
+        <!-- РАЗДЕЛ ТРЕНИРОВКИ -->
+        <section id="workouts" class="tab-content">
+            <h2 class="section-title">Программы Тренировок</h2>
+            <div class="filter-bar">
+                <button class="filter-btn active" data-filter="all">Все</button>
+                <button class="filter-btn" data-filter="ball">С мячом</button>
+                <button class="filter-btn" data-filter="cardio">Кардио</button>
+                <button class="filter-btn" data-filter="core">Корпус</button>
+            </div>
+            <div id="workouts-grid" class="cards-grid">
+                <!-- Карточки генерируются JS -->
+            </div>
+        </section>
+
+        <!-- РАЗДЕЛ ПРОГРЕСС -->
+        <section id="progress" class="tab-content">
+            <h2 class="section-title">Твой Прогресс</h2>
+            <div class="stats-container">
+                <div class="stat-card">
+                    <h3>Тренировок завершено</h3>
+                    <div class="stat-value" id="total-workouts">0</div>
                 </div>
-            </section>
-
-            <!-- Progress Section -->
-            <section id="progress" class="section">
-                <h2>📊 Твой прогресс</h2>
-                
-                <div class="progress-overview">
-                    <div class="progress-card">
-                        <h3>Эта неделя</h3>
-                        <div class="week-chart" id="week-chart">
-                            <!-- Chart will be rendered here -->
-                        </div>
-                    </div>
-                    
-                    <div class="progress-card">
-                        <h3>Достижения</h3>
-                        <div class="achievements" id="achievements-list">
-                            <!-- Achievements will be loaded here -->
-                        </div>
-                    </div>
+                <div class="stat-card">
+                    <h3>Изучено финтов</h3>
+                    <div class="stat-value" id="total-skills">0</div>
                 </div>
-
-                <div class="training-history">
-                    <h3>История тренировок</h3>
-                    <div id="history-list">
-                        <!-- History will be loaded here -->
-                    </div>
+                <div class="stat-card">
+                    <h3>Общее время (мин)</h3>
+                    <div class="stat-value" id="total-minutes">0</div>
                 </div>
-            </section>
+                <div class="stat-card">
+                    <h3>Уровень</h3>
+                    <div class="stat-value" id="user-level">Новичок</div>
+                </div>
+            </div>
+            
+            <h3 class="section-title">Достижения</h3>
+            <div id="achievements-grid" class="achievements-grid">
+                <!-- Достижения JS -->
+            </div>
+        </section>
 
-            <!-- Profile Section -->
-            <section id="profile" class="section">
-                <h2>👤 Профиль атлета</h2>
-                
-                <div class="profile-form">
+        <!-- РАЗДЕЛ ПРОФИЛЬ -->
+        <section id="profile" class="tab-content">
+            <h2 class="section-title">Настройки Профиля</h2>
+            <div class="profile-form-container">
+                <form id="profile-form">
                     <div class="form-group">
-                        <label for="athlete-name">Имя:</label>
-                        <input type="text" id="athlete-name" placeholder="Введите ваше имя" value="Girey">
+                        <label>Имя</label>
+                        <input type="text" id="profile-name" value="Girey" required>
                     </div>
-                    
                     <div class="form-group">
-                        <label for="athlete-age">Возраст:</label>
-                        <select id="athlete-age">
-                            <option value="">Выберите возраст</option>
-                            <option value="12">12 лет</option>
-                            <option value="13">13 лет</option>
-                            <option value="14" selected>14 лет</option>
-                            <option value="15">15 лет</option>
-                            <option value="16">16 лет</option>
+                        <label>Возраст</label>
+                        <input type="number" id="profile-age" value="14" min="12" max="16" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Цель</label>
+                        <select id="profile-goal">
+                            <option value="pro">Стать профи</option>
+                            <option value="fitness">Быть в форме</option>
+                            <option value="fun">Для удовольствия</option>
                         </select>
                     </div>
-                    
-                    <div class="form-group">
-                        <label for="athlete-level">Уровень подготовки:</label>
-                        <select id="athlete-level">
-                            <option value="beginner">Начинающий</option>
-                            <option value="intermediate">Средний</option>
-                            <option value="advanced">Продвинутый</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="athlete-position">Позиция на поле:</label>
-                        <select id="athlete-position">
-                            <option value="forward">Нападающий</option>
-                            <option value="midfielder">Полузащитник</option>
-                            <option value="defender">Защитник</option>
-                            <option value="goalkeeper">Вратарь</option>
-                            <option value="all">Универсал</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="training-goal">Цель тренировок:</label>
-                        <select id="training-goal">
-                            <option value="skill">Улучшение техники</option>
-                            <option value="fitness">Физическая форма</option>
-                            <option value="strength">Сила и мощь</option>
-                            <option value="speed">Скорость</option>
-                            <option value="all">Всё вместе</option>
-                        </select>
-                    </div>
-                    
-                    <button class="save-btn" id="save-profile">Сохранить профиль</button>
+                    <button type="submit" class="btn-primary">Сохранить изменения</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- МОДАЛЬНОЕ ОКНО: ДЕТАЛИ ФИНТА / УПРАЖНЕНИЯ -->
+    <div id="detail-modal" class="modal">
+        <div class="modal-content detail-modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="detail-header">
+                <h2 id="detail-title">Название</h2>
+                <span id="detail-difficulty" class="difficulty-badge">Средний</span>
+            </div>
+            <div class="detail-body">
+                <div class="detail-section">
+                    <h4>Описание</h4>
+                    <p id="detail-desc">Описание...</p>
+                </div>
+                
+                <!-- Секция для пошагового выполнения (Финты) -->
+                <div id="detail-steps-container" class="detail-section" style="display:none;">
+                    <h4>Техника выполнения</h4>
+                    <div id="detail-steps-list" class="steps-list"></div>
                 </div>
 
-                <div class="profile-stats">
-                    <h3>Статистика</h3>
-                    <div class="stats-grid">
-                        <div class="stat-item">
-                            <span class="stat-label">Всего тренировок:</span>
-                            <span class="stat-value" id="profile-total-workouts">0</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-label">Общее время:</span>
-                            <span class="stat-value" id="profile-total-time">0 ч</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-label">Текущая серия:</span>
-                            <span class="stat-value" id="profile-streak">0 дней</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-label">Лучшая серия:</span>
-                            <span class="stat-value" id="profile-best-streak">0 дней</span>
-                        </div>
-                    </div>
+                <!-- Секция для мышц (Упражнения) -->
+                <div id="detail-muscles-container" class="detail-section" style="display:none;">
+                    <h4>Задействованные мышцы</h4>
+                    <div id="detail-muscles-list" class="muscles-tags"></div>
                 </div>
-            </section>
-        </main>
 
-        <!-- Workout Modal -->
-        <div class="modal" id="workout-modal">
-            <div class="modal-content">
-                <button class="close-modal" id="close-workout">&times;</button>
-                <div id="workout-details">
-                    <!-- Workout details will be loaded here -->
-                </div>
+                <button id="start-detail-action" class="btn-primary full-width">Начать практику</button>
             </div>
         </div>
+    </div>
 
-        <!-- Exercise Detail Modal -->
-        <div class="modal" id="exercise-modal">
-            <div class="modal-content">
-                <button class="close-modal" id="close-exercise">&times;</button>
-                <div id="exercise-details">
-                    <!-- Exercise details will be loaded here -->
-                </div>
+    <!-- МОДАЛЬНОЕ ОКНО: АКТИВНАЯ ТРЕНИРОВКА -->
+    <div id="workout-modal" class="modal">
+        <div class="modal-content workout-modal-content">
+            <div class="workout-header">
+                <h2 id="workout-title">Тренировка</h2>
+                <div class="timer-display" id="timer">00:00</div>
             </div>
+            
+            <div class="exercise-card-large">
+                <h3 id="current-exercise-name">Название упражнения</h3>
+                <div class="exercise-timer" id="exercise-timer">30 сек</div>
+                <p id="current-exercise-desc">Описание...</p>
+                <div class="reps-display">Подход <span id="current-rep">1</span> из <span id="total-reps">5</span></div>
+            </div>
+
+            <div class="workout-controls">
+                <button id="prev-exercise" class="btn-secondary">← Назад</button>
+                <button id="toggle-timer" class="btn-primary">Старт</button>
+                <button id="next-exercise" class="btn-secondary">Вперед →</button>
+            </div>
+            
+            <button id="finish-workout" class="btn-danger full-width" style="margin-top: 20px;">Завершить тренировку</button>
         </div>
     </div>
 
