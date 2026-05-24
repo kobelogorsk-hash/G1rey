@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Football Training Pro - Для подростков 12-16 лет</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <h1>⚽ Football Training Pro</h1>
+            <p class="subtitle">Тренировки для футболистов 12-16 лет</p>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="navigation">
+            <button class="nav-btn active" data-section="home">🏠 Главная</button>
+            <button class="nav-btn" data-section="programs">📋 Программы</button>
+            <button class="nav-btn" data-section="exercises">💪 Упражнения</button>
+            <button class="nav-btn" data-section="progress">📊 Прогресс</button>
+            <button class="nav-btn" data-section="profile">👤 Профиль</button>
+        </nav>
+
+        <!-- Main Content Area -->
+        <main class="content">
+            <!-- Home Section -->
+            <section id="home" class="section active">
+                <div class="welcome-card">
+                    <h2>Добро пожаловать!</h2>
+                    <p>Готов стать лучше? Выбери программу и начни тренироваться!</p>
+                </div>
+                
+                <div class="quick-stats">
+                    <div class="stat-card">
+                        <span class="stat-icon">🔥</span>
+                        <span class="stat-value" id="streak-days">0</span>
+                        <span class="stat-label">Дней подряд</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-icon">✅</span>
+                        <span class="stat-value" id="completed-workouts">0</span>
+                        <span class="stat-label">Тренировок</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-icon">⭐</span>
+                        <span class="stat-value" id="total-points">0</span>
+                        <span class="stat-label">Очков</span>
+                    </div>
+                </div>
+
+                <div class="featured-program">
+                    <h3>🌟 Программа дня</h3>
+                    <div class="program-card featured" data-program-id="1">
+                        <div class="program-header">
+                            <span class="program-type ball-work">Работа с мячом</span>
+                            <span class="program-difficulty easy">Легкий</span>
+                        </div>
+                        <h4>Основы контроля мяча</h4>
+                        <p>Идеально для начинающих. Улучши контроль мяча за 15 минут.</p>
+                        <div class="program-meta">
+                            <span>⏱️ 15 мин</span>
+                            <span>🔥 120 ккал</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Programs Section -->
+            <section id="programs" class="section">
+                <h2>📋 Программы тренировок</h2>
+                
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">Все</button>
+                    <button class="filter-btn" data-filter="ball">С мячом</button>
+                    <button class="filter-btn" data-filter="cardio">Кардио</button>
+                    <button class="filter-btn" data-filter="core">Корпус</button>
+                </div>
+
+                <div class="programs-grid" id="programs-list">
+                    <!-- Programs will be loaded here -->
+                </div>
+            </section>
+
+            <!-- Exercises Section -->
+            <section id="exercises" class="section">
+                <h2>💪 Библиотека упражнений</h2>
+                
+                <div class="search-bar">
+                    <input type="text" id="exercise-search" placeholder="🔍 Поиск упражнений...">
+                </div>
+
+                <div class="exercises-grid" id="exercises-list">
+                    <!-- Exercises will be loaded here -->
+                </div>
+            </section>
+
+            <!-- Progress Section -->
+            <section id="progress" class="section">
+                <h2>📊 Твой прогресс</h2>
+                
+                <div class="progress-overview">
+                    <div class="progress-card">
+                        <h3>Эта неделя</h3>
+                        <div class="week-chart" id="week-chart">
+                            <!-- Chart will be rendered here -->
+                        </div>
+                    </div>
+                    
+                    <div class="progress-card">
+                        <h3>Достижения</h3>
+                        <div class="achievements" id="achievements-list">
+                            <!-- Achievements will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="training-history">
+                    <h3>История тренировок</h3>
+                    <div id="history-list">
+                        <!-- History will be loaded here -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Profile Section -->
+            <section id="profile" class="section">
+                <h2>👤 Профиль атлета</h2>
+                
+                <div class="profile-form">
+                    <div class="form-group">
+                        <label for="athlete-name">Имя:</label>
+                        <input type="text" id="athlete-name" placeholder="Введите ваше имя">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="athlete-age">Возраст:</label>
+                        <select id="athlete-age">
+                            <option value="">Выберите возраст</option>
+                            <option value="12">12 лет</option>
+                            <option value="13">13 лет</option>
+                            <option value="14">14 лет</option>
+                            <option value="15">15 лет</option>
+                            <option value="16">16 лет</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="athlete-level">Уровень подготовки:</label>
+                        <select id="athlete-level">
+                            <option value="beginner">Начинающий</option>
+                            <option value="intermediate">Средний</option>
+                            <option value="advanced">Продвинутый</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="athlete-position">Позиция на поле:</label>
+                        <select id="athlete-position">
+                            <option value="forward">Нападающий</option>
+                            <option value="midfielder">Полузащитник</option>
+                            <option value="defender">Защитник</option>
+                            <option value="goalkeeper">Вратарь</option>
+                            <option value="all">Универсал</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="training-goal">Цель тренировок:</label>
+                        <select id="training-goal">
+                            <option value="skill">Улучшение техники</option>
+                            <option value="fitness">Физическая форма</option>
+                            <option value="strength">Сила и мощь</option>
+                            <option value="speed">Скорость</option>
+                            <option value="all">Всё вместе</option>
+                        </select>
+                    </div>
+                    
+                    <button class="save-btn" id="save-profile">Сохранить профиль</button>
+                </div>
+
+                <div class="profile-stats">
+                    <h3>Статистика</h3>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <span class="stat-label">Всего тренировок:</span>
+                            <span class="stat-value" id="profile-total-workouts">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Общее время:</span>
+                            <span class="stat-value" id="profile-total-time">0 ч</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Текущая серия:</span>
+                            <span class="stat-value" id="profile-streak">0 дней</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Лучшая серия:</span>
+                            <span class="stat-value" id="profile-best-streak">0 дней</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Workout Modal -->
+        <div class="modal" id="workout-modal">
+            <div class="modal-content">
+                <button class="close-modal" id="close-workout">&times;</button>
+                <div id="workout-details">
+                    <!-- Workout details will be loaded here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Exercise Detail Modal -->
+        <div class="modal" id="exercise-modal">
+            <div class="modal-content">
+                <button class="close-modal" id="close-exercise">&times;</button>
+                <div id="exercise-details">
+                    <!-- Exercise details will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
